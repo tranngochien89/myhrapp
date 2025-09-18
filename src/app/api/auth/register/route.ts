@@ -33,7 +33,7 @@ import { hashPassword } from '@/lib/auth';
  *       500:
  *         description: An error occurred.
  */
-export async function POST(req: NextRequest) {
+export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     const { username, password } = await req.json();
 
@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, userId: user.id }, { status: 201 });
 
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ message: 'An error occurred' }, { status: 500 });
   }
 }

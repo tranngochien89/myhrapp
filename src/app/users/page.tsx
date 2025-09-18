@@ -30,7 +30,7 @@ export default async function UsersPage() {
 
   try {
     verify(token, JWT_SECRET);
-  } catch (error) {
+  } catch (_error) {
     redirect('/login');
   }
 

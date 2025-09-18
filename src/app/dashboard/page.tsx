@@ -10,9 +10,9 @@ export default async function DashboardPage() {
   const cookieStore = cookies();
   const token = cookieStore.get('token')?.value;
 
-  //if (!token) {
-  // redirect('/login');
- // }
+  if (!token) {
+   redirect('/login');
+  }
 
   try {
     const decoded = verify(token, JWT_SECRET) as { userId: number };
@@ -35,7 +35,7 @@ export default async function DashboardPage() {
         </form>
       </div>
     );
-  } catch (error) {
+  } catch (_error) {
     redirect('/login');
   }
 }

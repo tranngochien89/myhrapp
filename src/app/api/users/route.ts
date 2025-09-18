@@ -38,7 +38,7 @@ export async function GET() {
       },
     });
     return NextResponse.json(users);
-  } catch (error) {
+  } catch (_error) {
     return NextResponse.json({ message: 'An error occurred' }, { status: 500 });
   }
 }
